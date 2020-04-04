@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"gopkg.in/go-playground/validator.v9"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"strings"
 )
@@ -124,7 +123,7 @@ func postMessage(url string, message string) Result {
 		return result
 	}
 
-	log.Println("message:", message)
+	//log.Println("message:", message)
 
 	defer resp.Body.Close()
 	var content []byte
@@ -133,7 +132,7 @@ func postMessage(url string, message string) Result {
 		return result
 	}
 
-	log.Println("response result:", string(content))
+	//log.Println("response result:", string(content))
 	if err = json.Unmarshal(content, &result); err != nil {
 		result.ErrMsg = "unmarshal http response body error:" + err.Error()
 		return result

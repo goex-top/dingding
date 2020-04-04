@@ -2,7 +2,6 @@ package dingding
 
 import (
 	"container/list"
-	"log"
 	"sync"
 	"time"
 )
@@ -124,7 +123,7 @@ func sendQueueMessage(ding *DingQueue) {
 		go func() {
 			r := ding.ding.Send(Markdown{Title: title, Content: msg})
 			if !r.Success {
-				log.Println("err:" + r.ErrMsg)
+				//log.Println("err:" + r.ErrMsg)
 				NewDing(ding.ding.AccessToken).Send("消息太长，请通过其他途径查看，比如邮件")
 			}
 		}()
