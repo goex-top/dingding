@@ -104,6 +104,9 @@ func convertLink(m Link) map[string]interface{} {
 	var paramsMap = make(map[string]interface{})
 	paramsMap["msgtype"] = MsgTypeLink
 	paramsMap[MsgTypeLink] = map[string]string{MsgTypeText: m.Content, "title": m.Title, "picUrl": m.PictureURL, "messageUrl": m.ContentURL}
+	if m.AtAll {
+		paramsMap["at"] = map[string]interface{}{"isAtAll": true, "atUserIds": nil, "atMobiles": nil}
+	}
 	return paramsMap
 }
 
@@ -111,6 +114,9 @@ func convertMarkdown(m Markdown) map[string]interface{} {
 	var paramsMap = make(map[string]interface{})
 	paramsMap["msgtype"] = MsgTypeMarkdown
 	paramsMap[MsgTypeMarkdown] = map[string]string{MsgTypeText: m.Content, "title": m.Title}
+	if m.AtAll {
+		paramsMap["at"] = map[string]interface{}{"isAtAll": true, "atUserIds": nil, "atMobiles": nil}
+	}
 	return paramsMap
 }
 
