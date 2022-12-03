@@ -4,7 +4,7 @@
 package main
 
 import (
-	"github.com/beaquant/dingding"
+	"github.com/goex-top/dingding"
 )
 
 func main()  {
